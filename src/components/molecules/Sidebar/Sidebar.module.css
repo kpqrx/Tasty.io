@@ -1,5 +1,5 @@
 .container {
-  @apply flex flex-col gap-12 p-6 bg-highlight-lighter h-full w-full max-w-xs border-r border-highlight;
+  @apply flex flex-col gap-12 p-6 bg-highlight-lighter h-screen w-full max-w-xs fixed left-0 top-0 border-r border-highlight;
 }
 
 .logo {

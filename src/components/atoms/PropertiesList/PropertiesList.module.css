@@ -1,0 +1,15 @@
+.container {
+  @apply grid grid-cols-3 gap-x-12 gap-y-6;
+}
+
+.item {
+  @apply flex flex-col-reverse px-4 py-2 rounded-md transition hover:bg-neutral-100;
+}
+
+.itemLabel {
+  @apply text-sm text-neutral-600 whitespace-nowrap;
+}
+
+.itemValue {
+  @apply leading-loose;
+}

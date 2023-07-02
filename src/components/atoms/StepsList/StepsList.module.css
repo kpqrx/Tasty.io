@@ -1,0 +1,15 @@
+.container {
+  @apply flex flex-col gap-2;
+}
+
+.item {
+  @apply flex gap-4;
+}
+
+.itemNumber {
+  @apply w-9 h-9 aspect-square bg-accent text-white leading-9 text-center rounded-full;
+}
+
+.itemContent {
+  @apply px-4 py-2 rounded-lg text-neutral-600 bg-neutral-50;
+}

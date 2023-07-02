@@ -1,0 +1,15 @@
+.container {
+  @apply flex-1 grid grid-cols-[minmax(auto,640px)_1fr] gap-12 mt-[88px];
+}
+
+.image {
+  @apply rounded-xl w-full max-h-[268px] object-cover;
+}
+
+.section {
+  @apply flex items-start flex-col gap-4;
+}
+
+.sectionHeading {
+  @apply text-lg leading-loose;
+}

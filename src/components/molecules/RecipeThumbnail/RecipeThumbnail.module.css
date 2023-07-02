@@ -7,7 +7,7 @@
 }
 
 .containerSecondary {
-  @apply rounded-lg bg-highlight w-[420px] max-h-[82px] hover:bg-highlight-darker;
+  @apply rounded-lg bg-highlight max-h-[82px] hover:bg-highlight-darker;
 }
 
 .image {

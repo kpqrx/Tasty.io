@@ -1,0 +1,15 @@
+.container {
+  @apply flex gap-9 fixed top-0 pt-6 pb-12 bg-white w-[calc(100%-320px-96px)];
+}
+
+.arrowIcon {
+  @apply w-9 h-9 stroke-current stroke-2;
+}
+
+.name {
+  @apply text-4xl text-accent-darker;
+}
+
+.buttonsContainer {
+  @apply flex gap-6 ml-auto;
+}
