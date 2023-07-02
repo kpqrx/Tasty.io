@@ -1,18 +1,9 @@
 import type { RecipeThumbnailProps } from '@/components/molecules/RecipeThumbnail/RecipeThumbnail.types'
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from './RecipeThumbnail.module.css'
 
 const RecipeThumbnail = (props: RecipeThumbnailProps) => {
-  const {
-    label,
-    imageSrc,
-    imageWidth,
-    imageHeight,
-    href,
-    variant = 'primary',
-    ...restProps
-  } = props
+  const { label, imageSrc, href, variant = 'primary', ...restProps } = props
   return (
     <Link
       href={href}
@@ -23,11 +14,9 @@ const RecipeThumbnail = (props: RecipeThumbnailProps) => {
       `}
       {...restProps}
     >
-      <Image
+      <img
         src={imageSrc}
         alt={label}
-        width={imageWidth}
-        height={imageHeight}
         className={`
           ${styles.image}
           ${variant === 'secondary' && styles.imageSecondary}

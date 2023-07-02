@@ -1,5 +1,5 @@
 .container {
-  @apply flex relative overflow-hidden w-fit;
+  @apply flex relative overflow-hidden w-full;
 }
 
 .containerPrimary {
@@ -11,7 +11,7 @@
 }
 
 .image {
-  @apply object-cover;
+  @apply object-cover w-auto h-auto;
 }
 
 .imageSecondary {

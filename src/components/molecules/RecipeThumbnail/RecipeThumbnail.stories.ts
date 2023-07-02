@@ -7,8 +7,6 @@ const meta: Meta<typeof RecipeThumbnail> = {
     label: "Spaghetti aglio e olio",
     imageSrc:
       "https://images.pexels.com/photos/2116094/pexels-photo-2116094.jpeg?auto=compress&cs=tinysrgb&w=330&h=220&dpr=2",
-    imageWidth: 330,
-    imageHeight: 220,
     href: "#",
   },
   parameters: {

@@ -1,10 +1,14 @@
 'use client'
 
 import { PageHeader } from '@/components'
+import { useRecipeDetails } from '@/hooks'
 import React, { type PropsWithChildren } from 'react'
 
-function RecipeLayout(props: PropsWithChildren) {
-  const { children } = props
+function RecipeLayout(props: PropsWithChildren & { params: { id: number } }) {
+  const { children, params } = props
+  const { id } = params
+  const { data, isSuccess } = useRecipeDetails(id)
+
   return (
     <>
       <PageHeader
@@ -12,7 +16,7 @@ function RecipeLayout(props: PropsWithChildren) {
         isSaveRecipeButtonVisible
         isShoppingListButtonVisible
       >
-        Meal name
+        {isSuccess && data.name}
       </PageHeader>
       {children}
     </>

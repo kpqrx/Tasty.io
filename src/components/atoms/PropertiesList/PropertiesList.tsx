@@ -12,7 +12,9 @@ const PropertiesList = (props: PropertiesListProps) => {
             className={styles.item}
           >
             <span className={styles.itemLabel}>{label}</span>
-            <span className={styles.itemValue}>{value}</span>
+            <span className={styles.itemValue}>
+              {typeof value === 'boolean' ? (value ? 'Yes' : 'No') : value}
+            </span>
           </li>
         ))}
       </ul>

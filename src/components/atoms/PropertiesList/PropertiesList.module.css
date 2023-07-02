@@ -7,7 +7,7 @@
 }
 
 .itemLabel {
-  @apply text-sm text-neutral-600 whitespace-nowrap;
+  @apply text-sm text-neutral-600 flex-1;
 }
 
 .itemValue {

@@ -1,6 +1,6 @@
 export type PropertiesListItemType = {
   label: string
-  value: string
+  value: number | boolean
 }
 
 export interface PropertiesListProps {

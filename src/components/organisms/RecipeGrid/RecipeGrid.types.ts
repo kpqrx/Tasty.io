@@ -4,8 +4,6 @@ import type { DetailedListItemType } from '@/components/molecules/DetailedList/D
 export interface RecipeGridProps {
   name: string
   imageSrc: string
-  imageWidth: number
-  imageHeight: number
   properties: PropertiesListItemType[]
   steps: string[]
   ingredients: DetailedListItemType[]

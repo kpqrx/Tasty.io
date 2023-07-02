@@ -1,18 +1,41 @@
 'use client'
 
 import { Input, PageHeader, RecipeThumbnail } from '@/components'
+import { fetchRecipesByQuery } from '@/utils'
+import { useQuery } from '@tanstack/react-query'
+import { useCallback, useState, type ChangeEventHandler } from 'react'
+import { useDebounce } from 'usehooks-ts'
 
-const xd = Array(7).fill({
-  label: 'Spaghetti aglio e olio',
-  imageSrc:
-    'https://images.pexels.com/photos/2116094/pexels-photo-2116094.jpeg?auto=compress&cs=tinysrgb&w=330&h=220&dpr=2',
-  imageWidth: 330,
-  imageHeight: 220,
-  href: '#',
-  variant: 'secondary',
-})
+export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const debouncedSearchQuery = useDebounce(searchQuery, 500)
+  const { data, isSuccess, isInitialLoading, isError } = useQuery(
+    ['searchRecipes', debouncedSearchQuery],
+    () => fetchRecipesByQuery(debouncedSearchQuery),
+    {
+      enabled: debouncedSearchQuery.length > 2,
+      select: (data) =>
+        data.map(({ image, id, title }) => ({
+          id,
+          label: title,
+          imageSrc: image,
+          href: `/recipes/${id}`,
+        })),
+    },
+  )
 
-export default function Home() {
+  const handleSetSearchQuery = useCallback<
+    ChangeEventHandler<HTMLInputElement>
+  >(
+    (event) => {
+      const {
+        target: { value },
+      } = event
+      setSearchQuery(value)
+    },
+    [setSearchQuery],
+  )
+
   return (
     <>
       <PageHeader>Recipes</PageHeader>
@@ -27,24 +50,38 @@ export default function Home() {
         <Input
           label="Search recipe"
           placeholder="Search..."
+          value={searchQuery}
+          onChange={handleSetSearchQuery}
         />
-        <section className="flex flex-col gap-2">
-          <h2 className="text-2xl leading-loose">
-            Search results for
-            <span className="text-accent-darker mx-4">
-              &bdquo;spicy pasta&rdquo;
-            </span>
-            :
-          </h2>
-          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-            {xd.map((recipeData, index) => (
-              <RecipeThumbnail
-                key={index}
-                {...recipeData}
-              />
-            ))}
-          </div>
-        </section>
+        {isInitialLoading && (
+          <h2 className="text-2xl leading-loose">Loading...</h2>
+        )}
+        {isError && (
+          <>
+            <h2 className="text-2xl leading-loose">Something went wrong</h2>
+            <p className="text-neutral-500">Please try again later.</p>
+          </>
+        )}
+        {isSuccess && (
+          <section className="flex flex-col gap-2">
+            <h2 className="text-2xl leading-loose">
+              Search results for
+              <span className="text-accent-darker mx-4">
+                &bdquo;{debouncedSearchQuery}&rdquo;
+              </span>
+              :
+            </h2>
+            <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+              {data.map(({ id, ...recipeData }) => (
+                <RecipeThumbnail
+                  key={id}
+                  {...recipeData}
+                  variant="secondary"
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </>
   )
