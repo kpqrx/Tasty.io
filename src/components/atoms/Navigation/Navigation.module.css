@@ -1,0 +1,14 @@
+.container {
+  @apply flex flex-col gap-2;
+}
+
+.item {
+  @apply w-full rounded-lg bg-highlight hover:bg-highlight-darker transition;
+}
+.link {
+  @apply flex gap-6 items-center px-4 py-2;
+}
+
+.icon {
+  @apply text-3xl;
+}

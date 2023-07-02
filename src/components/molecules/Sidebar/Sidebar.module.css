@@ -1,0 +1,11 @@
+.container {
+  @apply flex flex-col gap-12 p-6 bg-highlight-lighter h-full w-full max-w-xs border-r border-highlight;
+}
+
+.logo {
+  @apply text-4xl;
+}
+
+.footer {
+  @apply mt-auto text-sm text-center;
+}

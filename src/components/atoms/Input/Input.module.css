@@ -1,0 +1,7 @@
+.label {
+  @apply sr-only;
+}
+
+.input {
+  @apply bg-transparent px-4 py-2 min-w-[240px] rounded-lg outline-0 border-2 border-accent ring-accent/25 hover:border-accent-lighter focus-visible:border-accent-lighter focus-visible:ring-4 placeholder:text-neutral-400;
+}

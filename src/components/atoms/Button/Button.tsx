@@ -1,15 +1,16 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react'
+import styles from './Button.module.css'
 
 const Button = (props: PropsWithChildren) => {
-  const { children, ...restProps } = props;
+  const { children, ...restProps } = props
   return (
     <button
-      className="rounded-lg bg-accent hover:bg-accent-darker transition px-6 py-2"
+      className={styles.container}
       {...restProps}
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
