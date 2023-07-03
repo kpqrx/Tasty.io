@@ -1,5 +1,5 @@
 .container {
-  @apply flex-1 grid grid-cols-[minmax(auto,768px)_1fr] gap-12;
+  @apply flex-1 flex flex-col 2xl:grid grid-cols-[minmax(auto,768px)_1fr] gap-12;
 }
 
 .image {

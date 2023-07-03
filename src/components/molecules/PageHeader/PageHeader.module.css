@@ -11,7 +11,7 @@
 }
 
 .name {
-  @apply text-4xl text-accent-darker w-full whitespace-nowrap overflow-hidden text-ellipsis;
+  @apply text-3xl text-accent-darker whitespace-nowrap;
 }
 
 .buttonsContainer {

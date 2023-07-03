@@ -1,5 +1,5 @@
 .container {
-  @apply grid grid-cols-3 gap-x-12 gap-y-6;
+  @apply grid grid-cols-3 gap-6;
 }
 
 .item {

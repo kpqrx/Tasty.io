@@ -24,7 +24,6 @@ export default function RootLayout({
               navigationItems={[
                 { label: 'Search recipes', icon: '🧑🏻‍🍳', href: '/' },
                 { label: 'Saved recipes', icon: '🍲', href: '/recipes/saved' },
-                { label: 'Shopping list', icon: '🛒', href: '/shopping-list' },
               ]}
             />
             <main className="flex flex-col flex-1 h-full relative justify-between gap-12 px-12 py-6 mt-[88px]">

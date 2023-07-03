@@ -1,7 +1,7 @@
-import type { PropsWithChildren } from 'react'
 import styles from './Button.module.css'
+import type { ButtonProps } from './Button.types'
 
-const Button = (props: PropsWithChildren) => {
+const Button = (props: ButtonProps) => {
   const { children, ...restProps } = props
   return (
     <button

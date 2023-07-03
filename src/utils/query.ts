@@ -5,7 +5,6 @@ export const transformRecipesByQueryData = (data: SearchedRecipeType[]) =>
     id,
     label: title,
     imageSrc: image,
-    href: `/recipes/${id}`,
   }))
 
 export const transformRecipeDetailsData = (data: RecipeDetailsType) => {

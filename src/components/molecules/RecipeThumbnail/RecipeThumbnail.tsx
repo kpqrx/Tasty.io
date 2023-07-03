@@ -1,12 +1,21 @@
 import type { RecipeThumbnailProps } from '@/components/molecules/RecipeThumbnail/RecipeThumbnail.types'
 import Link from 'next/link'
 import styles from './RecipeThumbnail.module.css'
+import Button from '@/components/atoms/Button/Button'
 
 const RecipeThumbnail = (props: RecipeThumbnailProps) => {
-  const { label, imageSrc, href, variant = 'primary', ...restProps } = props
+  const {
+    id,
+    label,
+    imageSrc,
+    variant = 'primary',
+    actionCallback,
+    actionName,
+    ...restProps
+  } = props
   return (
     <Link
-      href={href}
+      href={`/recipes/${id}`}
       className={`
         ${styles.container} 
         ${variant === 'primary' && styles.containerPrimary} 
@@ -31,6 +40,9 @@ const RecipeThumbnail = (props: RecipeThumbnailProps) => {
       >
         {label}
       </span>
+      {/* {actionCallback && actionName && (
+        <Button onClick={actionCallback}>{actionName}</Button>
+      )} */}
     </Link>
   )
 }

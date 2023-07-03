@@ -1,18 +1,22 @@
 'use client'
 
 import { Input, PageHeader, RecipeThumbnail } from '@/components'
+import { useSearchRecipesStore } from '@/store'
 import { fetchRecipesByQuery } from '@/utils'
 import { useQuery } from '@tanstack/react-query'
 import { useCallback, useState, type ChangeEventHandler } from 'react'
 import { useDebounce } from 'usehooks-ts'
 
 export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const { searchQuery: defaultSearchQuery, setSearchQuery: storeSearchQuery } =
+    useSearchRecipesStore()
+  const [searchQuery, setSearchQuery] = useState(defaultSearchQuery)
   const debouncedSearchQuery = useDebounce(searchQuery, 500)
-  const { data, isSuccess, isInitialLoading, isError } = useQuery(
+  const { data, isSuccess, isInitialLoading, isLoading, isError } = useQuery(
     ['searchRecipes', debouncedSearchQuery],
     () => fetchRecipesByQuery(debouncedSearchQuery),
     {
+      onSuccess: () => storeSearchQuery(debouncedSearchQuery),
       enabled: debouncedSearchQuery.length > 2,
       select: (data) =>
         data.map(({ image, id, title }) => ({
@@ -53,7 +57,7 @@ export default function HomePage() {
           value={searchQuery}
           onChange={handleSetSearchQuery}
         />
-        {isInitialLoading && (
+        {(defaultSearchQuery ? isInitialLoading : isLoading) && (
           <h2 className="text-2xl leading-loose">Loading...</h2>
         )}
         {isError && (
@@ -75,6 +79,7 @@ export default function HomePage() {
               {data.map(({ id, ...recipeData }) => (
                 <RecipeThumbnail
                   key={id}
+                  id={id}
                   {...recipeData}
                   variant="secondary"
                 />

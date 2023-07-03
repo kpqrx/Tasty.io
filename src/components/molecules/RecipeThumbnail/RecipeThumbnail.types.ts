@@ -1,6 +1,8 @@
 export interface RecipeThumbnailProps {
   imageSrc: string
   label: string
-  href: string
+  id: number
   variant?: 'primary' | 'secondary'
+  actionCallback?: () => void
+  actionName?: string
 }
